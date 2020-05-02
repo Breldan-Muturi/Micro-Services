@@ -1,19 +1,18 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useState } from 'react';
+import axios from 'axios';
 
 export default () => {
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState('');
 
-  const onSubmit = async (event) => {
-    //Prevent browser from submiting the form.
+  const onSubmit = async event => {
     event.preventDefault();
 
-    await axios.post("http://localhost:4000/posts", {
-      title,
+    await axios.post('http://localhost:4000/posts', {
+      title
     });
 
-    setTitle("");
-  }; //CORS error as the client is on 3000 and we try to make a request to posts on 4000
+    setTitle('');
+  };
 
   return (
     <div>
@@ -22,7 +21,7 @@ export default () => {
           <label>Title</label>
           <input
             value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            onChange={e => setTitle(e.target.value)}
             className="form-control"
           />
         </div>
